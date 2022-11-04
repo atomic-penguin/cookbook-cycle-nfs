@@ -45,7 +45,7 @@ default['nfs']['packages'] = if node['platform_family'] == 'debian'
 
 # rpc-statd doesn't start unless you call nfs-config on Ubuntu
 default['nfs']['service']['config'] = if (node['platform'] == 'debian' && node['platform_version'].to_i >= 10) ||
-                                         (node['platform'] == 'ubuntu' && node['platform_version'].to_i >= 15)
+                                         (node['platform'] == 'ubuntu' && (node['platform_version'].to_i >= 15 && node['platform_version'].to_i < 22))
                                         'nfs-config.service'
                                       end
 
@@ -105,7 +105,7 @@ default['nfs']['idmap']['group'] = if node['platform_family'] == 'debian'
 # These are object refs to the default services, used as an iteration key in recipe.
 # These are not the literal service names passed to the service resource.
 # i.e. nfs.service.config, nfs.service.portmap, nfs.service.lock above
-default['nfs']['client-services'] = if node['platform_family'] == 'debian'
+default['nfs']['client-services'] = if (node['platform_family'] == 'debian' || (node['platform'] == 'ubuntu' && node['platform_version'].to_i < 22))
                                       %w(config portmap lock)
                                     else
                                       %w(portmap lock)
