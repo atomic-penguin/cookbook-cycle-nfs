@@ -1,3 +1,8 @@
+v3.0.2
+------
+
+Fixed platform condition which set incorrect client-services on Ubuntu 22.04
+
 v3.0.0
 ------
 

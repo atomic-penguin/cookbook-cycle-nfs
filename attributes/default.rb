@@ -105,7 +105,7 @@ default['nfs']['idmap']['group'] = if node['platform_family'] == 'debian'
 # These are object refs to the default services, used as an iteration key in recipe.
 # These are not the literal service names passed to the service resource.
 # i.e. nfs.service.config, nfs.service.portmap, nfs.service.lock above
-default['nfs']['client-services'] = if (node['platform_family'] == 'debian' || (node['platform'] == 'ubuntu' && node['platform_version'].to_i < 22))
+default['nfs']['client-services'] = if (node['platform'] == 'debian' || (node['platform'] == 'ubuntu' && node['platform_version'].to_i < 22))
                                       %w(config portmap lock)
                                     else
                                       %w(portmap lock)
