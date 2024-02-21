@@ -1,3 +1,9 @@
+v4.1.0
+------
+
+Update cookbook to render nfs.conf template.
+Picked upstream changes, but maintained CycleCloud Jetpack compatibility
+
 v3.0.2
 ------
 
